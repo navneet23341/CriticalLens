@@ -1,18 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
-import AskAi from './AskAi'
+import { useState } from "react";
+import AskAi from "./AskAi";
+import GuessAns from "./GuessAns";
+import Claim from "./Claim";
+import Result from "./Result";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [step, setStep] = useState(1);
+  const [question, setQuestion] = useState("");
+  const [answer, setAnswer] = useState("");
+  const [claims, setClaims] = useState([]);
+  const [responses, setResponses] = useState([]); // ⭐ NEW
 
   return (
     <>
-    <AskAi/>
+      {step === 1 && (
+        <AskAi setQuestion={setQuestion} setStep={setStep} />
+      )}
+
+      {step === 2 && (
+        <GuessAns
+          question={question}
+          setAnswer={setAnswer}
+          setStep={setStep}
+          setClaims={setClaims}
+        />
+      )}
+
+      {step === 3 && (
+        <Claim
+          claims={claims}
+          setStep={setStep}
+          setResponses={setResponses} // ⭐ NEW
+        />
+      )}
+
+      {step === 4 && (
+        <Result responses={responses} question={question} />
+      )}
     </>
-  )
+  );
 }
 
-export default App
+export default App;

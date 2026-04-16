@@ -184,10 +184,5 @@
 } */
 
 body{
-  background-image: 
-  linear-gradient(to right , #ffffff2c 2px, transparent 2px ),
-  linear-gradient(to bottom ,#ffffff2c 2px, transparent 2px);
-
-  background-size: 40px 40px;
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(22, 22, 22);
 }
